@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <title>黑白相间导航栏</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+		}
+
+		nav {
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 50px;
+			padding: 0 20px;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+
+		nav li {
+			margin-left: 10px;
+		}
+
+		nav li a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+		}
+
+		nav li a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+		.dropdown {
+			
+			display: inline-block;
+            position: absolute;
+            top: 12;
+            left:1300px;
+            
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			z-index: 1;
+			min-width: 160px;
+			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+			padding: 12px 16px;
+			border-radius: 5px;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown-content a {
+			color: #333;
+			font-size: 14px;
+			padding: 6px 0;
+			display: block;
+            
+		}
+        .dropdown12 {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown12-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+.dropdown12:hover .dropdown12-content {
+  display: block;
+}
+
+
+.headswiper-content {
+       
+	   display: flex;
+	   /* 以容器的方式 */
+	   flex-wrap: wrap;
+	   /* #换行 */
+	   align-items:flex-end ;
+	   flex-direction: column;
+	 }
+	 
+	 .headswiper-item {
+	   
+	   width: 100%;
+	   padding: 10px;
+	   background-color: #f9f9f9;
+	   text-align: justify;
+	   position:relative
+	  
+	 }
+	 
+	 .headswiper-item:hover {
+	   background-color: white;
+	 }
+	 
+	 .headswiper-item h2 {
+	   font-size: 1.2em;
+	   margin-bottom: 5px;
+	 }
+	 
+	 .headswiper-item p {
+	   margin-top: 0;
+	 }
+	 
+	 .headswiper-item a {
+	   color: #333;
+	   text-decoration: none;
+	 }
+	 
+	 .headswiper-item a:hover {
+	   text-decoration: underline;
+	 }
+
+	 .content {
+		border: 1px solid #ccc;
+		background-color: #f7f7f7;
+		padding: 10px;
+		margin-bottom: 10px;
+		height:80px;
+		width:600px;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+
+	  }
+	  
+	  .content a {
+		color: #333;
+		text-decoration: none;
+	  }
+	  
+	  .content a:hover {
+		color: #666;
+		text-decoration: underline;
+	  }
+	.anniu {
+		background-color: none;
+		border: none;
+		color: white;
+		padding: 10px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 4px;
+	  }
+
+	</style>
+</head>
+<body>
+    <nav>
+		<ul>
+			<li >
+                <a href="#">经济常识</a>
+            </li>
+            
+			<li><a href="#">IT常识</a></li>
+			<li><a href="#">逻辑推理</a></li>
+			<li><a href="">农业机械</a></li>
+			<li><a href="/home/publish_content">发布</a></li>
+          
+			<li class="dropdown">
+				<a href="/home/sign_in">登录</a>
+				<div class="dropdown-content">
+					<a href="/home/sign_in">用户登录</a>
+					<a href="/administrator">管理员登录</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+			{% for content in contents %}			
+			 <div class="content">
+				
+				<h4>{{ content.title }}</h4>
+				<a href="{% url 'mysite:article_detail' article_id=article.id %}}" class="btn btn-primary">阅读本文</a>
+				<p>{{ content.text|truncatechars:100  }}</p>
+				
+				
+			  </div>
+{% endfor %} 
+</body>
+</html>

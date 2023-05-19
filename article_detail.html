@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        background-color: #f8f9fa;  /* 页面背景色 */
+      }
+    .container {
+        max-width: 800px;  /* 容器最大宽度 */
+        margin: 50px auto;  /* 自动居中 */
+        background-color: #fff;  /* 白色背景 */
+        border-radius: 5px;  /* 圆角 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* 轻微阴影效果 */
+        padding: 20px;  /* 内边距 */
+      }
+    h1 {
+        font-size: 32px;  /* 字号 */
+        font-weight: 800;  /* 字重 */
+      }
+    .small {
+        font-size: 14px;   /* 字号 */
+        color: #7d7d7d;  /* 灰色字体 */
+        margin-bottom: 30px;  /* 文字下方边距 */
+      }
+    .border-top {
+        border-top: 1px solid #ccc;  /* 上方边框 */
+        padding-top: 20px;  /* 上边距 */
+        font-size: 16px;  /* 字号 */
+        line-height: 1.6;  /* 行高 */
+        color: #333;  /* 颜色 */
+      }
+      div.pt-4 h1 {
+        font-size: 32px;  /* 字体大小 */
+        font-weight: 600;  /* 字体加粗 */
+        margin-top: 10px;  /* 顶部外边距 */
+        margin-bottom: 15px;  /* 底部外边距 */
+        color: #333;  /* 文字颜色 */
+        text-align: left;  /* 向左对齐 */ 
+        line-height: 1.2;  /* 行高 */
+      }
+    </style>
+
+</head>
+<!-- #继承模板，重写块，名为title，名为content -->
+<body>
+    {% extends 'base.html' %}
+
+{% block content %}
+
+   
+            <h1>{{ article.title }}</h1>
+      
+            {{ article.text|safe }}  
+{% endblock %}
+
+
+</body>
+</html>

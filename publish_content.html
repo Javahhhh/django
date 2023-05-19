@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .input-box {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.title-input input,
+.subtitle-input input {
+  font-size: 16px;
+  padding: 16px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0062cc;
+}
+/* 设置按钮宽度和高度 */
+button {
+  width: 100px;
+  height: 40px;
+}
+
+/* 设置按钮定位 */
+.button-container {
+  position: relative;
+}
+
+button {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, 100%);
+}
+textarea{
+    resize: vertical;
+}
+
+nav {
+  background-color: #e6e6e6e8;
+  font-size: 18px;
+  position: absolute;
+  top: 114px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  position: relative;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  color: #777104;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #e1e1e1;
+}
+</style>
+
+</head>
+<body>
+  
+  {% block content %}
+  <form method="POST" action="{% url 'publish_content' %}">
+    {% csrf_token %}
+    <div class="input-box">
+        <div class="title-input">
+          <input type="text"style="width: 500px;"name="title" placeholder="请输入正标题">
+        </div>
+        <nav>
+            <ul>
+             
+              <li><a href="#">颜色</a></li>
+              <li><a href="#">加粗</a></li>
+              <li><a href="#">字体大小</a></li>
+              
+            </ul>
+          </nav>
+        <textarea name="text" cols="30" rows="40" placeholder="正文"></textarea>
+        
+        <button class="submit-btn" type="submit" name="action" value="publish">发布</button>
+      </div>
+    </form>
+    {% endblock %}
+</body>
+</html>
